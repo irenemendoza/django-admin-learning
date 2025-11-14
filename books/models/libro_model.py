@@ -8,7 +8,15 @@ class Libro(models.Model):
     isbn = models.CharField(max_length=13, unique=True)
     fecha_publicacion = models.DateField()
     numero_paginas = models.IntegerField()
-    idioma = models.CharField(max_length=100)
+    lang_choices = {
+        "ES": "Español",
+        "EN": "Inglés"
+    }
+    idioma = models.CharField(
+        max_length=2,
+        choices=lang_choices, 
+        default="ES"
+        )
     descripcion = models.TextField()
     editorial = models.ForeignKey(Editorial, on_delete=models.CASCADE)
     autores = models.ManyToManyField(Autor)
