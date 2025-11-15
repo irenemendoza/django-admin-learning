@@ -37,7 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'books'
+    'debug_toolbar', # Añadido para el toolbar
+    'django_extensions',
+    'import_export',
+    'simple_history',
+    'books',
+
 ]
 
 MIDDLEWARE = [
@@ -48,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     "debug_toolbar.middleware.DebugToolbarMiddleware", # Añadido para el toolbar
+     'simple_history.middleware.HistoryRequestMiddleware'  # Para el history
 ]
 
 ROOT_URLCONF = 'biblioteca.urls'
@@ -122,3 +129,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+INTERNAL_IPS = [
+    "127.0.0.1", # Añadido para el toolbar
+]
+
+# For graph_models:
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}

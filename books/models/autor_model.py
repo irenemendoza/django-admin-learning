@@ -1,4 +1,5 @@
 from django.db import models
+from simple_history.models import HistoricalRecords
 
 # Modelo para Autores
 class Autor(models.Model):
@@ -11,6 +12,7 @@ class Autor(models.Model):
     telefono = models.CharField(max_length=20)
     sitio_web = models.URLField()
     premios = models.TextField()
+    history = HistoricalRecords()
     
     def __str__(self):
         return f'{self.nombre} {self.apellido}'

@@ -1,13 +1,22 @@
 from django.contrib import admin
 from books.models import Autor, Editorial, Libro
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
 
 # Register your models here.
+
+class AutorResource(resources.ModelResource):
+    class Meta:
+        model = Autor
+        fields = ('nombre', 'apellido')
+        export_order = ('nombre', 'apellido')
 
 class LibroInline(admin.StackedInline):
     model = Libro
 
 @admin.register(Autor)
-class AutorAdmin (admin.ModelAdmin):
+class AutorAdmin (ImportExportModelAdmin):
+    resource_class = AutorResource
     list_display = ["nombre", "apellido", "fecha_nacimiento", "nacionalidad"]
     ordering = ["nombre"]
 
@@ -26,3 +35,5 @@ class LibroAdmin (admin.ModelAdmin):
     list_filter = ["editorial", "idioma"]
     search_fields = ["titulo", "autores__nombre"]
     filter_horizontal = ["autores"]
+
+    
