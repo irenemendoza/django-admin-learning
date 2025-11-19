@@ -3,4 +3,52 @@ from django.shortcuts import render
 # Vistas generales de la aplicación
 
 def autor_views(request):
-    return render(request, 'autor/autor.html')
+
+    autores = [
+        {
+            "id": 1, 
+            "nombre": "Antonio"
+        },
+            {
+            "id": 2, 
+            "nombre": "Felipe"
+        },
+        {
+            "id": 3, 
+            "nombre": "Matilde"
+        },
+    ]
+    
+    context = {
+        "autores": autores,
+        "titulo": "Pepito"
+    }
+    return render(request, 'autor/autor.html', context)
+
+def autor_detail(request, id):
+
+    autores = [
+        {
+            "id": 1, 
+            "nombre": "Antonio"
+        },
+            {
+            "id": 2, 
+            "nombre": "Felipe"
+        },
+        {
+            "id": 3, 
+            "nombre": "Matilde"
+        },
+    ]
+     
+    context = {
+            "autor": None,
+        }
+    
+
+    for autor in autores:
+        if autor["id"] == id:
+              context["autor"] = autor
+
+    return render(request, 'autor/autor_detail.html', context)
