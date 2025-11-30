@@ -3,3 +3,25 @@
 {% block head_title %}Contact{% endblock %}
 {% block page_title %}Contacta con nosotros{% endblock %}
 
+{% block page_content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <!-- <div>
+            <label for="name">Nombre</label>
+            <input type="text" name="nombre" required>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" name="email" required>
+        </div>
+        <div>
+            <label for="">Comentario</label>
+            <textarea name="comentario" id="comentario" required></textarea>
+        </div>
+        -->
+        <div>
+            {{ formulario.as_p }}
+        </div>
+        <button>Enviar</button> 
+    </form>
+{% endblock %}

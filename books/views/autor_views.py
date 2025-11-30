@@ -1,23 +1,12 @@
 from django.shortcuts import render
 
+from books.models import Autor
+
 # Vistas generales de la aplicación
 
 def autor_views(request):
 
-    autores = [
-        {
-            "id": 1, 
-            "nombre": "Antonio"
-        },
-            {
-            "id": 2, 
-            "nombre": "Felipe"
-        },
-        {
-            "id": 3, 
-            "nombre": "Matilde"
-        },
-    ]
+    autores = Autor.objects.all()
     
     context = {
         "autores": autores,

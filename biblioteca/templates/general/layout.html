@@ -4,16 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block head_title %}Layout{% endblock %}</title>
+    {% csrf_token %}
 </head>
 <body>
     <h1>{% block page_title %}Título de la página{% endblock %}</h1>
-        <ul>
-            <li><a href="{% url 'home' %}">Inicio</a></li>
-            <li><a href="{% url 'books:autor_list' %}">Autores</a></li>
-            <li><a href="{% url 'books:libro_list' %}">Libros</a></li>
-            <li><a href="{% url 'books:editorial_list' %}">Editoriales</a></li>
-            <li><a href="{% url 'contacto' %}">Contacto</a></li>
-        </ul>
+        {% include "_includes/_menu_principal.html" %}
         {% block page_content %}{% endblock %}
 </body>
 </html>

@@ -9,10 +9,11 @@ class Libro(models.Model):
     isbn = models.CharField(max_length=13, unique=True)
     fecha_publicacion = models.DateField()
     numero_paginas = models.IntegerField()
-    lang_choices = {
-        "ES": "Español",
-        "EN": "Inglés"
-    }
+    lang_choices = (
+        ("ES", "Español"),
+        ("EN", "Inglés")
+    )
+            
     idioma = models.CharField(
         max_length=2,
         choices=lang_choices, 
