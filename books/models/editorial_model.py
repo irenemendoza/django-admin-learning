@@ -1,15 +1,47 @@
 from django.db import models
 # Modelo para Editoriales
 class Editorial(models.Model):
-    nombre = models.CharField(max_length=200)
-    direccion = models.CharField(max_length=300)
-    ciudad = models.CharField(max_length=100)
-    estado = models.CharField(max_length=100)
-    pais = models.CharField(max_length=100)
-    codigo_postal = models.CharField(max_length=20)
-    telefono = models.CharField(max_length=20)
-    email = models.EmailField()
-    sitio_web = models.URLField()
+    nombre = models.CharField(
+        max_length=200
+        )
+    direccion = models.CharField(
+        max_length=300,
+        blank=True,
+        null=True
+        )
+    ciudad = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True
+        )
+    estado = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True
+        )
+    pais = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True
+        )
+    codigo_postal = models.CharField(
+        max_length=20,
+        blank=True,
+        null=True
+        )
+    telefono = models.CharField(
+        max_length=20,
+        blank=True,
+        null=True
+        )
+    email = models.EmailField(
+        blank=True,
+        null=True  
+    )
+    sitio_web = models.URLField(
+        blank=True,
+        null=True
+    )
     fecha_fundacion = models.DateField()
 
     def __str__(self):
