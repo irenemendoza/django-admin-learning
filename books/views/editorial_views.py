@@ -1,20 +1,41 @@
-from django.shortcuts import render
-from books.forms import EditorialCreate
+from django.shortcuts import render, redirect
+from books.forms import EditorialModelFormCreate
 from books.models import Editorial
 
+from django.urls import reverse
+
 def editorial_views(request):
-    return render(request, 'editorial/editorial.html')
+    editoriales = Editorial.objects.all()
+
+    context = {
+        'editoriales': editoriales
+    }
+
+    return render(request, 'editorial/editorial.html', context)
+
+def editorial_detail_views(request, id):
+     
+    editorial = Editorial.objects.get(pk=id)
+
+    context = {
+        'editorial': editorial
+    }
+    
+
+    return render(request, 'editorial/editorial_detail.html', context)
 
 def editorial_create_views(request):
     if request.POST:
-        form = EditorialCreate(request.POST)
+        form = EditorialModelFormCreate(request.POST)
         if form.is_valid():
-            Editorial.objects.create(
+            nueva_editorial = Editorial.objects.create(
                 nombre = form.cleaned_data['nombre'],
                 fecha_fundacion = form.cleaned_data['fecha_fundacion']
             )
+        return redirect(reverse('books:editorial_detail', kwargs={'id': nueva_editorial.pk}))
+            
     else:
-        form = EditorialCreate()
+        form = EditorialModelFormCreate()
     
     context = {
         'form': form

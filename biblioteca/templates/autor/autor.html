@@ -10,6 +10,8 @@
         {% for autor in autores %}
             <p><a href="{% url 'books:autor_detail' autor.id %}">{{ autor.nombre }}</a></p>
         {% endfor %}
+
+        <a href="{% url 'books:autor_create' %}">Crear nuevo autor</a>
     </section>
 {% endblock %}
     

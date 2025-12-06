@@ -1,6 +1,8 @@
 from django import forms
+from books.models import Editorial
+from django.forms import ModelForm
 
-class EditorialCreate(forms.Form):
+"""class EditorialCreate(forms.Form):
     nombre = forms.CharField(
         max_length=200,
         )
@@ -37,3 +39,9 @@ class EditorialCreate(forms.Form):
     fecha_fundacion = forms.DateField(
         widget = forms.SelectDateWidget
     )
+
+"""
+class EditorialModelFormCreate(ModelForm):
+    class Meta:
+        model = Editorial
+        fields = ['nombre', 'email', 'fecha_fundacion']

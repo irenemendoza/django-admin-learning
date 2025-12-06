@@ -1,0 +1,14 @@
+{% extends 'general/layout.html' %}
+
+{% block head_title %}Página de Autores{% endblock %}
+{% block page_title %}Nuevo Autor{% endblock %}
+
+{% block page_content %}
+    <h2>Datos del nuevo autor</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Crear Autor</button>
+    </form>
+
+{% endblock %}
