@@ -4,6 +4,9 @@ from books.models import Editorial
 
 from django.urls import reverse
 
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+
 def editorial_views(request):
     editoriales = Editorial.objects.all()
 
@@ -13,6 +16,21 @@ def editorial_views(request):
 
     return render(request, 'editorial/editorial.html', context)
 
+class EditorialList(ListView):
+    model = Editorial
+    template_name = "editorial/editoriales_ccbv.html"
+    context_object_name = "editoriales"
+
+class EditorialDetail(DetailView):
+    model = Editorial
+    template_name = "editorial/editorial_detail_ccbv.html"
+    context_object_name = "editorial"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["titulo"] = 'Este es mi título añadido como contexto'
+        return context
+  
 def editorial_detail_views(request, id):
      
     editorial = Editorial.objects.get(pk=id)
