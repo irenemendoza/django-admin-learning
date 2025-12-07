@@ -7,8 +7,14 @@ from simple_history.models import HistoricalRecords
 class Libro(models.Model):
     titulo = models.CharField(max_length=300)
     isbn = models.CharField(max_length=13, unique=True)
-    fecha_publicacion = models.DateField()
-    numero_paginas = models.IntegerField()
+    fecha_publicacion = models.DateField(
+        null = True,
+        blank = True
+    )
+    numero_paginas = models.IntegerField(
+        null = True,
+        blank = True
+    )
     lang_choices = (
         ("ES", "Español"),
         ("EN", "Inglés")
@@ -19,11 +25,27 @@ class Libro(models.Model):
         choices=lang_choices, 
         default="ES"
         )
-    descripcion = models.TextField()
-    editorial = models.ForeignKey(Editorial, on_delete=models.CASCADE)
-    autores = models.ManyToManyField(Autor)
-    genero = models.CharField(max_length=100)
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    descripcion = models.TextField(
+        null = True,
+        blank = True
+    )
+    editorial = models.ForeignKey(
+        Editorial, 
+        on_delete=models.CASCADE,
+        )
+    autores = models.ManyToManyField(
+        Autor,
+        null = True,
+        blank = True)
+    genero = models.CharField(
+        max_length=100,
+        null = True,
+        blank = True)
+    precio = models.DecimalField(
+        max_digits=10, 
+        decimal_places=2,
+        null = True,
+        blank = True)
     history = HistoricalRecords()
 
     def __str__(self):

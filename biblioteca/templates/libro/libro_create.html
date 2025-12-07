@@ -1,0 +1,14 @@
+{% extends 'general/layout.html' %}
+
+{% block head_title %}Books{% endblock %}
+{% block page_title %}Crear nuevo libro{% endblock %}
+
+{% block page_content %}
+
+    <section>
+        <form method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Save">
+        </form>
+    </section>
+{% endblock %}
