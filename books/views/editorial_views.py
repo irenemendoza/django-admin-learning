@@ -1,12 +1,52 @@
-from django.shortcuts import render, redirect
-from books.forms import EditorialModelFormCreate
+from django.shortcuts import render, #redirect
+#from books.forms import EditorialModelFormCreate
 from books.models import Editorial
 
-from django.urls import reverse
+#from django.urls import reverse
 
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
 
+from django.views.generic.edit import UpdateView, DeleteView
+from django.urls import reverse_lazy
+
+
+class EditorialListView(ListView):
+    model = Editorial
+    template_name = "editorial/editoriales_ccbv.html"
+    context_object_name = "editoriales"
+
+class EditorialDetailView(DetailView):
+    model = Editorial
+    template_name = "editorial/editorial_detail_ccbv.html"
+    context_object_name = "editorial"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["titulo"] = 'Este es mi título añadido como contexto'
+        return context
+
+class EditorialCreateView(CreateView):
+    model = Editorial
+    fields = ["nombre", "email", "fecha_fundacion"]
+    template_name = "editorial/editorial_create.html"
+
+
+class EditorialUpdateView(UpdateView):
+    model = Editorial
+    fields = ["nombre", "email", "fecha_fundacion"]
+    template_name = "editorial/editorial_update.html"
+    context_object_name = "editorial"
+
+
+class EditorialDeleteView(DeleteView):
+    model = Editorial
+    success_url =reverse_lazy('books:editorial_list')
+    context_object_name = "editorial"
+    template_name = "editorial/editorial_delete.html"
+
+"""
 def editorial_views(request):
     editoriales = Editorial.objects.all()
 
@@ -16,21 +56,6 @@ def editorial_views(request):
 
     return render(request, 'editorial/editorial.html', context)
 
-class EditorialList(ListView):
-    model = Editorial
-    template_name = "editorial/editoriales_ccbv.html"
-    context_object_name = "editoriales"
-
-class EditorialDetail(DetailView):
-    model = Editorial
-    template_name = "editorial/editorial_detail_ccbv.html"
-    context_object_name = "editorial"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["titulo"] = 'Este es mi título añadido como contexto'
-        return context
-  
 def editorial_detail_views(request, id):
      
     editorial = Editorial.objects.get(pk=id)
@@ -59,3 +84,4 @@ def editorial_create_views(request):
         'form': form
     }
     return render(request, 'editorial/editorial_create.html', context)
+    """

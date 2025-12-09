@@ -2,6 +2,7 @@ from django.db import models
 from .editorial_model import Editorial
 from .autor_model import Autor
 from simple_history.models import HistoricalRecords
+from django.urls import reverse
 
 # Modelo para Libros
 class Libro(models.Model):
@@ -35,7 +36,6 @@ class Libro(models.Model):
         )
     autores = models.ManyToManyField(
         Autor,
-        null = True,
         blank = True)
     genero = models.CharField(
         max_length=100,
@@ -50,3 +50,6 @@ class Libro(models.Model):
 
     def __str__(self):
         return self.titulo
+
+    def get_absolute_url(self):
+        return reverse('books:libro_detail', kwargs={'pk': self.pk})

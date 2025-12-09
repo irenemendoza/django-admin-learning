@@ -5,9 +5,15 @@
 
 {% block page_content %}
     <h2>Lista completa de Libros</h2>
+    <ul>
         {% for libro in libros %}
-            <li><a href="{% url 'books:libro_detail_ccbv' libro.pk %}">{{ libro.titulo }}</a></li>
+            <li>
+                <a href="{% url 'books:libro_detail' libro.pk %}">{{ libro.titulo }}</a>
+                <a href="{% url 'books:libro_update' libro.pk %}">Actualizar</a>
+                <a href="{% url 'books:libro_delete' libro.pk %}">Eliminar</a>
+            </li>
         {% endfor %}
+    </ul>
     <ul>
         <li><a href="{% url 'books:libro_create' %}">Agregar libro</a></li>
     </ul>

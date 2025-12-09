@@ -5,13 +5,10 @@
 
 {% block page_content %}
     <section>
-        {% if autor %}
-            <h2>Nombre del autor: {{ autor.nombre }}</h2>
-            <p>ID del autor: {{ autor.id }}</p>
-        {% else %}
-            <h2>No se ha encontrado el autor que buscabas</h2>
-            <p>Si quieres busca en la <a href="{% url 'books:autor_list' %}">lista de autores</a></p>
-        {% endif %}
+        <h3>Autor: {{ autor }}</h3>
+        <p>Nacionalidad: {{ autor.nacionalidad }}</p>
+        <p>email: {{ autor.email }}</p>
+        <a href="{% url 'books:autor_list' %}">Volver al listado de autores</a>
     </section>
 {% endblock %}
     

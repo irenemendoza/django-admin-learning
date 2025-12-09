@@ -4,10 +4,11 @@
 {% block page_title %}Mi libro detalle{% endblock %}
 
 {% block page_content %}
+
     <section>
         <h3>Nombre del libro: {{ libro.titulo }}</h3>
         <p>isbn: {{ libro.isbn }}</p>
         <p>editorial: {{ libro.editorial }}</p>
-        <a href="{% url 'books:libro_list_ccbv' %}">Volver al listado de libros</a>
+        <a href="{% url 'books:libro_list' %}">Volver al listado de libros</a>
     </section>
 {% endblock %}

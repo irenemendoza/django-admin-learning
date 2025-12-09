@@ -1,10 +1,43 @@
-from django.shortcuts import render, redirect
-from books.forms import AutorModelFormCreate
+from django.shortcuts import render, #redirect
+# from books.forms import AutorModelFormCreate
 from books.models import Autor
 
-from django.urls import reverse
-# Vistas generales de la aplicación
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
 
+from django.views.generic.edit import UpdateView, DeleteView
+from django.urls import reverse_lazy
+
+
+class AutorList(ListView):
+    model = Autor
+    template_name = "autor/autores.html"
+    context_object_name = "autores"
+
+class AutorDetail(DetailView):
+    model = Autor
+    template_name = "autor/autor_detail.html"
+    context_object_name = "autor"
+
+class AutorCreateView(CreateView):
+    model = Libro
+    fields = ["nombre", "apellido", "fecha_nacimiento", "nacionalidad", "biografia", "email"]
+    template_name = "autor/autor_create.html"
+
+class AutorUpdateView(UpdateView):
+    model = Autor
+    fields = ["nombre", "apellido", "fecha_nacimiento", "nacionalidad", "biografia", "email"]
+    template_name = "autor/autor_update.html"
+    context_object_name = "autor"
+
+class AutorDeleteView(DeleteView):
+    model = Autor
+    success_url =reverse_lazy('books:autor_list')
+    context_object_name = "autor"
+    template_name = "autor/autor_delete.html"
+    
+"""
 def autor_views(request):
 
     autores = Autor.objects.all()
@@ -43,3 +76,4 @@ def autor_create_views(request):
         'form': form
     }
     return render(request, 'autor/autor_create.html', context)
+    """

@@ -1,22 +1,10 @@
-from django.urls import path
-from .views.autor_views import autor_views, autor_detail, autor_create_views
-from .views.libro_views import libro_views, LibroList, LibroDetail, LibroCreateView
-from .views.editorial_views import editorial_views, editorial_create_views, editorial_detail_views, EditorialList, EditorialDetail
-
+from django.urls import path, include
 
 app_name = "books"
 
 urlpatterns = [
-    path('autor/', autor_views, name="autor_list"),
-    path('autor/<int:id>/', autor_detail, name="autor_detail"),
-    path('editorial/', editorial_views, name="editorial_list"),
-    path('editorial/lista/', EditorialList.as_view(), name="editorial_list_ccbv"),
-    path('editorial/<int:id>/', editorial_detail_views, name="editorial_detail"),
-    path('editorial/ccbv/<pk>/', EditorialDetail.as_view(), name="editorial_detail_ccbv"),
-    path('libro/', libro_views, name="libro_list"),
-    path('libro/ccbv', LibroList.as_view(), name="libro_list_ccbv"),
-    path('libro/ccbv/detail/<pk>', LibroDetail.as_view(), name="libro_detail_ccbv"),
-    path('libro/createbook', LibroCreateView.as_view(), name="libro_create"),
-    path('editorial/create/', editorial_create_views, name="editorial_create"),
-    path('autor/create/', autor_create_views, name="autor_create")
+    path('editorial/', include('books.urls.editoriales_urls')),
+    path('libro/', include('books.urls.libros_urls')),
+    path('editorial/', include('books.urls.autores_urls')),
 ] 
+

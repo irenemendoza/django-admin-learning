@@ -34,10 +34,7 @@ class Editorial(models.Model):
         blank=True,
         null=True
         )
-    email = models.EmailField(
-        blank=True,
-        null=True  
-    )
+    email = models.EmailField()
     sitio_web = models.URLField(
         blank=True,
         null=True
@@ -47,3 +44,6 @@ class Editorial(models.Model):
     def __str__(self):
         return self.nombre
     
+    def get_absolute_url(self):
+        return reverse('books:editorial_detail', kwargs={'pk': self.pk})
+

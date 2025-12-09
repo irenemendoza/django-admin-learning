@@ -3,17 +3,17 @@ from simple_history.models import HistoricalRecords
 
 # Modelo para Autores
 class Autor(models.Model):
-    nombre = models.CharField(max_length=200)
-    apellido = models.CharField(max_length=200)
-    fecha_nacimiento = models.DateField(
-        blank=True,
-        null=True
-    )
-    nacionalidad = models.CharField(max_length=100)
-    biografia = models.TextField(
-        blank=True,
-        null=True
-    )
+    nombre = models.CharField(
+        max_length=200
+        )
+    apellido = models.CharField(
+        max_length=200
+        )
+    fecha_nacimiento = models.DateField()
+    nacionalidad = models.CharField(
+        max_length=100
+        )
+    biografia = models.TextField()
     email = models.EmailField()
     telefono = models.CharField(
         max_length=20,
@@ -27,8 +27,9 @@ class Autor(models.Model):
         blank=True,
         null=True
     )
-    history = HistoricalRecords()
     
     def __str__(self):
         return f'{self.nombre} {self.apellido}'
 
+    def get_absolute_url(self):
+        return reverse('books:autor_detail', kwargs={'pk': self.pk})

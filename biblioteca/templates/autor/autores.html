@@ -1,0 +1,23 @@
+{% extends 'general/layout.html' %}
+
+{% block head_title %}Autor{% endblock %}
+{% block page_title %}Nuestros autores{% endblock %}
+
+{% block page_content %}
+    <h2>Lista completa de Autores</h2>
+    <ul>
+        {% for libro in libros %}
+            <li>
+                <a href="{% url 'books:autor_detail' autor.pk %}">{{ libro.titulo }}</a>
+                <a href="{% url 'books:autor_update' autor.pk %}">Actualizar</a>
+                <a href="{% url 'books:autor_delete' autor.pk %}">Eliminar</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <ul>
+        <li><a href="{% url 'books:autor_create' %}">Agregar autor</a></li>
+    </ul>
+{% endblock %}
+    
+</body>
+</html>
