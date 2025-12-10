@@ -1,14 +1,14 @@
 {% extends 'general/layout.html' %}
 
 {% block head_title %}Página de Autores{% endblock %}
-{% block page_title %}Nuevo Autor{% endblock %}
+{% block page_title %}Editar Autor{% endblock %}
 
 {% block page_content %}
     <section>
         <form method="post">{% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="Update">
+            <a href="{% url 'autor:list' %}">Cancelar</a>
         </form>
     </section>
-    <a href="{% url 'books:autor_list' %}">Volver al listado</a>
 {% endblock %}

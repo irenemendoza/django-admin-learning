@@ -8,7 +8,11 @@
         <h3>Autor: {{ autor }}</h3>
         <p>Nacionalidad: {{ autor.nacionalidad }}</p>
         <p>email: {{ autor.email }}</p>
-        <a href="{% url 'books:autor_list' %}">Volver al listado de autores</a>
+        <a href="{% url 'autor:update' autor.pk %}">Actualizar</a>
+        <a href="{% url 'autor:delete' autor.pk %}">Eliminar</a>
+        <p>
+            <a href="{% url 'autor:list' %}">Volver al listado de autores</a>
+        </p>
     </section>
 {% endblock %}
     

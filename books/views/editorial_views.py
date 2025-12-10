@@ -1,4 +1,4 @@
-from django.shortcuts import render, #redirect
+from django.shortcuts import render#, redirect
 #from books.forms import EditorialModelFormCreate
 from books.models import Editorial
 
@@ -14,12 +14,13 @@ from django.urls import reverse_lazy
 
 class EditorialListView(ListView):
     model = Editorial
-    template_name = "editorial/editoriales_ccbv.html"
+    template_name = "editorial/Editoriales.html"
     context_object_name = "editoriales"
+
 
 class EditorialDetailView(DetailView):
     model = Editorial
-    template_name = "editorial/editorial_detail_ccbv.html"
+    template_name = "editorial/EditorialDetail.html"
     context_object_name = "editorial"
 
     def get_context_data(self, **kwargs):
@@ -27,24 +28,25 @@ class EditorialDetailView(DetailView):
         context["titulo"] = 'Este es mi título añadido como contexto'
         return context
 
+
 class EditorialCreateView(CreateView):
     model = Editorial
     fields = ["nombre", "email", "fecha_fundacion"]
-    template_name = "editorial/editorial_create.html"
+    template_name = "editorial/EditorialCreate.html"
 
 
 class EditorialUpdateView(UpdateView):
     model = Editorial
     fields = ["nombre", "email", "fecha_fundacion"]
-    template_name = "editorial/editorial_update.html"
+    template_name = "editorial/EditorialUpdate.html"
     context_object_name = "editorial"
 
 
 class EditorialDeleteView(DeleteView):
     model = Editorial
-    success_url =reverse_lazy('books:editorial_list')
+    success_url =reverse_lazy('editorial:list')
     context_object_name = "editorial"
-    template_name = "editorial/editorial_delete.html"
+    template_name = "editorial/EditorialDelete.html"
 
 """
 def editorial_views(request):

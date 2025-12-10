@@ -52,4 +52,4 @@ class Libro(models.Model):
         return self.titulo
 
     def get_absolute_url(self):
-        return reverse('books:libro_detail', kwargs={'pk': self.pk})
+        return reverse('libro:detail', kwargs={'pk': self.pk})

@@ -6,10 +6,9 @@
 {% block page_content %}
     <section>
         <form method="post">{% csrf_token %}
-            <p>¿Seguro que quieres eliminar el autor: "{{ autor }}"?</p>
-            {{ form }}
-            <input type="submit" value="Confirm">
+            {{ form.as_p }}
+            <input type="submit" value="Save">
+            <a href="{% url 'autor:list' %}">Cancelar</a>
         </form>
     </section>
-    <a href="{% url 'books:autor_list' %}">Volver al listado</a>
 {% endblock %}

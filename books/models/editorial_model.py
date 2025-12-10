@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 # Modelo para Editoriales
 class Editorial(models.Model):
     nombre = models.CharField(
@@ -45,5 +46,5 @@ class Editorial(models.Model):
         return self.nombre
     
     def get_absolute_url(self):
-        return reverse('books:editorial_detail', kwargs={'pk': self.pk})
+        return reverse('editorial:detail', kwargs={'pk': self.pk})
 

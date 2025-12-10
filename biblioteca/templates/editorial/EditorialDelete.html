@@ -1,0 +1,13 @@
+{% extends 'general/layout.html' %}
+
+{% block head_title %}Página de Editoriales{% endblock %}
+{% block page_title %}Eliminar Editorial{% endblock %}
+
+{% block page_content %}
+     <form method="post">{% csrf_token %}
+            <p>¿Seguro que quieres eliminar la editorial: "{{ editorial }}"?</p>
+            {{ form }}
+            <input type="submit" value="Confirm">
+            <a href="{% url 'editorial:list' %}">Cancelar</a>
+        </form>
+{% endblock %}

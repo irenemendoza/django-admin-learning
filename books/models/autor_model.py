@@ -1,5 +1,6 @@
 from django.db import models
 from simple_history.models import HistoricalRecords
+from django.urls import reverse
 
 # Modelo para Autores
 class Autor(models.Model):
@@ -32,4 +33,4 @@ class Autor(models.Model):
         return f'{self.nombre} {self.apellido}'
 
     def get_absolute_url(self):
-        return reverse('books:autor_detail', kwargs={'pk': self.pk})
+        return reverse('autor:detail', kwargs={'pk': self.pk})

@@ -1,0 +1,17 @@
+{% extends 'general/layout.html' %}
+
+{% block head_title %}Autor{% endblock %}
+{% block page_title %}Nuestros autores{% endblock %}
+
+{% block page_content %}
+    <h2>Lista completa de Autores</h2>
+    <ul>
+        {% for autor in autores %}
+            <li>
+                <a href="{% url 'autor:detail' autor.pk %}">{{ autor }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+</body>
+</html>

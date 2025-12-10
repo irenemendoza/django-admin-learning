@@ -9,6 +9,7 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button>Crear Editorial</button>
+        <a href="{% url 'editorial:list' %}">Cancelar</a>
     </form>
 
 {% endblock %}

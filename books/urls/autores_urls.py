@@ -1,17 +1,18 @@
 from django.urls import path
-from books.views import 
+from books.views import (
 AutorListView, 
 AutorDetailView, 
 AutorCreateView,
 AutorUpdateView,
 AutorDeleteView
+)
 
-app_name = "books"
+app_name = "autor"
 
 urlpatterns = [
-    path('autor/lista/', AutorListView.as_view(), name="autor_list"),
-    path('autor/ccbv/<pk>/', AutorDetail.as_view(), name="autor_detail"),
-    path('autor/create/', AutorCreateView.as_view(), name="autor_create"),
-    path('autor/update/', AutorUpdateView.as_view(), name="autor_update"),
-    path('autor/delete/', AutorDeleteView.as_view(), name="autor_delete"),
+    path('autor/lista/', AutorListView.as_view(), name="list"),
+    path('autor/create/', AutorCreateView.as_view(), name="create"),
+    path('autor/<pk>/', AutorDetailView.as_view(), name="detail"),
+    path('autor/update/<pk>', AutorUpdateView.as_view(), name="update"),
+    path('autor/delete/<pk>', AutorDeleteView.as_view(), name="delete"),
     ]

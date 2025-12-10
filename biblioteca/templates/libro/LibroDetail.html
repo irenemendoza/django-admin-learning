@@ -9,6 +9,10 @@
         <h3>Nombre del libro: {{ libro.titulo }}</h3>
         <p>isbn: {{ libro.isbn }}</p>
         <p>editorial: {{ libro.editorial }}</p>
-        <a href="{% url 'books:libro_list' %}">Volver al listado de libros</a>
+        <a href="{% url 'libro:update' libro.pk %}">Actualizar</a>
+        <a href="{% url 'libro:delete' libro.pk %}">Eliminar</a>
+        <p>
+            <a href="{% url 'libro:list' %}">Volver al listado de libros</a>
+        </p>
     </section>
 {% endblock %}

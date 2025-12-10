@@ -1,0 +1,15 @@
+{% extends 'general/layout.html' %}
+
+{% block head_title %}Página de Editoriales{% endblock %}
+{% block page_title %}Editar Editorial{% endblock %}
+
+{% block page_content %}
+    <h2>Datos de la Editorial</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Editar Editorial</button>
+        <a href="{% url 'editorial:list' %}">Cancelar</a>
+    </form>
+
+{% endblock %}
