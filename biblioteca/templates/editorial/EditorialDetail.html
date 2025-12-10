@@ -10,7 +10,9 @@
         <p>ID de la editorial: {{ editorial.id }}</p>
         <p>Email: {{ editorial.email }}</p>
         <a href="{% url 'editorial:update' editorial.pk %}">Actualizar</a>
-        <a href="{% url 'editorial:delete' editorial.pk %}">Eliminar</a>
+        {% if editorial.created_by == request.user %}
+            <a href="{% url 'editorial:delete' editorial.pk %}">Eliminar</a>
+        {% endif %}
         <p>    
             <a href="{% url 'editorial:list' %}">Volver al listado de editoriales</a>
         </p>
