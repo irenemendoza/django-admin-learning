@@ -52,8 +52,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-     "debug_toolbar.middleware.DebugToolbarMiddleware", # Añadido para el toolbar
-     'simple_history.middleware.HistoryRequestMiddleware'  # Para el history
+    "debug_toolbar.middleware.DebugToolbarMiddleware", # Añadido para el toolbar
+    'simple_history.middleware.HistoryRequestMiddleware',  # Para el history
+    'books.custom_middleware.TiempoDeProcesamientoMiddleware',
 ]
 
 ROOT_URLCONF = 'biblioteca.urls'
