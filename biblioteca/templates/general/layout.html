@@ -5,10 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block head_title %}Layout{% endblock %}</title>
     {% csrf_token %}
+    <style>
+        .message-success {
+            color: green
+        }
+        .message-info {
+            color: blue
+        }
+        .message-error {
+            color: red
+        }
+        .message-warning {
+            color: yellow
+        }
+    </style>
 </head>
 <body>
     <h1>{% block page_title %}Título de la página{% endblock %}</h1>
         {% include "_includes/_menu_principal.html" %}
         {% block page_content %}{% endblock %}
 </body>
+<footer>
+    {% include "_includes/_footer_principal.html" %}
+</footer>
+
 </html>
