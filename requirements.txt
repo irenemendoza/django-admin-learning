@@ -3,4 +3,5 @@ django-debug-toolbar==6.1.0
 django-extensions==4.1
 django-import-export==4.3.14
 django-simple-history==3.10.1
+django-rosetta==0.10.3
 

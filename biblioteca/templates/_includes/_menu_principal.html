@@ -1,5 +1,9 @@
+{% load i18n %}
+
+<h5>{% trans 'Menú principal' %}</h5>
+
 <ul>
-    <li><a href="{% url 'home' %}">Inicio</a></li>
+    <li><a href="{% url 'home' %}">{% trans 'Inicio' %}</a></li>
     <li><a href="{% url 'autor:list' %}">Autores</a></li>
     <li><a href="{% url 'libro:list' %}">Libros</a></li>
     <li><a href="{% url 'editorial:list' %}">Editoriales</a></li>
@@ -10,6 +14,16 @@
         <li>Usuario logueado: {{ request.user.email }}</li>
     {% endif %}
 </ul>
+
+<form action="{% url 'set_language' %}" method="post">
+    {% csrf_token %}
+    <select name="language">
+        <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
+        <option value="es" {% if LANGUAGE_CODE == 'es' %}selected{% endif %}>Spanish</option>
+    </select>
+    <input type="hidden" name="next" value="{{ request.path }}">
+    <button type="submit">Cambiar idioma</button>
+</form>
 
 {% if messages %}
 <section class="messages">

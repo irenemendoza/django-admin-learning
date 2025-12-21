@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'debug_toolbar', # Añadido para el toolbar
     'django_extensions',
     'import_export',
+    'rosetta',
     'simple_history',
     'books',
 
@@ -121,17 +122,22 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+# Definir las opciones de idiomas disponibles
 LANGUAGES = [
     ('en', 'English'),
     ('es', 'Español'),
 ]
 
-
+# Definir la ruta donde se almacenarán los archivos de traducción
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
 
+# Añadimos cookie de idioma
+LANGUAGE_COOKIE_NAME = 'django_language'
+
 # Static files (CSS, JavaScript, Images)
+# Default primary key field type
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'

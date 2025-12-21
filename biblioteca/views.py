@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.contrib import messages
 from django.utils.translation import gettext as _
+from django.views.generic import View
+from django.http import HttpResponseRedirect
+from django.utils import translation
 from books.models import Autor, Libro, Editorial
 from books.forms import SearchForm
 from .form import ContactForm
@@ -91,3 +94,16 @@ def contact_view(request):
         "formulario": formulario
     }
     return render(request, 'general/contact.html', context)
+
+class SetLanguageView(View):
+    def post(self, request, *args, **kwargs):
+        # Obtenemos el idioma seleccionado del formulario
+        language = request.POST.get('language', None)
+
+        # Si se seleccionó un idioma, lo activamos
+        if language:
+            translation.activate(language)
+            
+        # Redirigimos a la página desde donde se hizo la petición
+        next_url = request.POST.get('next', '/')
+        return HttpResponseRedirect(next_url)
