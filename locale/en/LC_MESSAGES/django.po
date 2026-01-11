@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-21 09:31+0100\n"
-"PO-Revision-Date: 2025-12-21 09:48+0100\n"
+"POT-Creation-Date: 2026-01-11 18:40+0100\n"
+"PO-Revision-Date: 2026-01-11 18:40+0100\n"
 "Last-Translator:   <iremen19@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,17 +19,37 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.3\n"
 
-#: biblioteca/templates/_includes/_menu_principal.html:1
+#: biblioteca/form.py:7
+msgid "Nombre"
+msgstr "Name"
+
+#: biblioteca/form.py:10
+msgid "Email"
+msgstr "Email"
+
+#: biblioteca/form.py:13
+msgid "Comentario"
+msgstr "Comment"
+
+#: biblioteca/templates/_includes/_menu_principal.html:3
 msgid "Menú principal"
 msgstr "Main menu"
 
-#: biblioteca/templates/_includes/_menu_principal.html:4
+#: biblioteca/templates/_includes/_menu_principal.html:6
 msgid "Inicio"
 msgstr "Home"
 
-#: biblioteca/views.py:80
+#: biblioteca/templates/general/contact.html:5
+msgid "Contacta con nosotros"
+msgstr "Contact"
+
+#: biblioteca/templates/general/contact.html:26
+msgid "Enviar"
+msgstr "Sent"
+
+#: biblioteca/views.py:83
 msgid "El correo se ha enviado correctamente"
-msgstr ""
+msgstr "Successfully sent"
 
 #: env/lib/python3.12/site-packages/django/contrib/messages/apps.py:15
 msgid "Messages"
