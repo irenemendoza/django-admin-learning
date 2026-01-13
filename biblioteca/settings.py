@@ -26,10 +26,42 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Internationalization
+# https://docs.djangoproject.com/en/4.2/topics/i18n/
+
+LANGUAGE_CODE = 'es-ES'
+
+TIME_ZONE = 'Europe/Madrid'
+
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+PREFIX_DEFAULT_LANGUAGE = True
+
+# Definir las opciones de idiomas disponibles
+LANGUAGES = [
+    ('en', 'English'),
+    ('es', 'Español'),
+]
+
+# Definir la ruta donde se almacenarán los archivos de traducción
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
+
+# Añadimos cookie de idioma
+LANGUAGE_COOKIE_NAME = 'django_language'
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'es'
+MODELTRANSLATION_LANGUAGES = ('es', 'en')
+MODELTRANSLATION_FALLBACK_LANGUAGES = ('es', 'en') # Idioma por defecto que se tomaría si no se puede traducir
+MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'es' # Cómo se va a listar en el admin
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +73,8 @@ INSTALLED_APPS = [
     'import_export',
     'rosetta',
     'simple_history',
+    
+
     'books',
 
 ]
@@ -113,31 +147,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
-
-LANGUAGE_CODE = 'es-ES'
-
-TIME_ZONE = 'Europe/Madrid'
-
-USE_I18N = True
-USE_L10N = True
-USE_TZ = True
-PREFIX_DEFAULT_LANGUAGE = True
-
-# Definir las opciones de idiomas disponibles
-LANGUAGES = [
-    ('en', 'English'),
-    ('es', 'Español'),
-]
-
-# Definir la ruta donde se almacenarán los archivos de traducción
-LOCALE_PATHS = [
-    BASE_DIR / 'locale',
-]
-
-# Añadimos cookie de idioma
-LANGUAGE_COOKIE_NAME = 'django_language'
 
 # Static files (CSS, JavaScript, Images)
 # Default primary key field type

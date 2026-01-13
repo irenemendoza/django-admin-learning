@@ -46,7 +46,7 @@ class Libro(models.Model):
         decimal_places=2,
         null = True,
         blank = True)
-    history = HistoricalRecords()
+
 
     def __str__(self):
         return self.titulo
