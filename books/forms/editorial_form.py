@@ -1,8 +1,10 @@
 from django import forms
 from books.models import Editorial
 from django.forms import ModelForm
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Fieldset, Submit
 
-"""class EditorialCreate(forms.Form):
+class EditorialCreate(forms.Form):
     nombre = forms.CharField(
         max_length=200,
         )
@@ -40,8 +42,10 @@ from django.forms import ModelForm
         widget = forms.SelectDateWidget
     )
 
-"""
+
 class EditorialModelFormCreate(ModelForm):
     class Meta:
         model = Editorial
-        fields = ['nombre', 'email', 'fecha_fundacion']
+        fields = ['nombre', 'email', 'fecha_fundacion', 'level']
+
+   

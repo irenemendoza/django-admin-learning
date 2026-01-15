@@ -73,6 +73,8 @@ INSTALLED_APPS = [
     'import_export',
     'rosetta',
     'simple_history',
+    'crispy_forms',
+    'crispy_bootstrap5',
     
 
     'books',
@@ -181,3 +183,6 @@ GRAPH_MODELS = {
   'all_applications': True,
   'group_models': True,
 }
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'

@@ -1,5 +1,5 @@
 from django.shortcuts import render#, redirect
-#from books.forms import EditorialModelFormCreate
+from books.forms import EditorialModelFormCreate
 from books.models import Editorial
 
 #from django.urls import reverse
@@ -36,8 +36,9 @@ class EditorialDetailView(DetailView):
 @method_decorator(login_required, name="dispatch")
 class EditorialCreateView(CreateView):
     model = Editorial
-    fields = ["nombre", "email", "fecha_fundacion"]
+    # fields = ["nombre", "email", "fecha_fundacion"]
     template_name = "editorial/EditorialCreate.html"
+    form_class = EditorialModelFormCreate
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
