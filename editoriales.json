@@ -1,0 +1,21 @@
+[
+{
+    "model": "books.editorial",
+    "pk": 1,
+    "fields": {
+        "nombre": "Reynal & Hitchcock (EUA) Ediciones Gallimard (Francia)",
+        "nombre_es": "Reynal & Hitchcock (EUA) Ediciones Gallimard (Francia)",
+        "nombre_en": "Reynal & Hitchcock (EUA) Editions Gallimard (Francia)",
+        "direccion": null,
+        "ciudad": null,
+        "estado": null,
+        "pais": null,
+        "codigo_postal": null,
+        "telefono": null,
+        "email": "editorial@gmail.com",
+        "sitio_web": null,
+        "fecha_fundacion": "1880-01-01",
+        "created_by": null
+    }
+}
+]

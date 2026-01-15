@@ -46,7 +46,10 @@ class Libro(models.Model):
         decimal_places=2,
         null = True,
         blank = True)
-
+    is_out_of_stock = models.BooleanField(
+        'Está fuera de stock',
+        default = False
+    )
 
     def __str__(self):
         return self.titulo

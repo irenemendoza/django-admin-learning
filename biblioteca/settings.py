@@ -120,13 +120,26 @@ WSGI_APPLICATION = 'biblioteca.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mydb',  # Nombre de la base de datos
+        'USER': 'django_user_db',   # Usuario creado para la base de datos
+        'PASSWORD': 'django_user_pass', # Contraseña del usuario
+        'HOST': '127.0.0.1',    # Dirección IP del host (localhost o la IP de la máquina)
+        'PORT': '3306', # Puerto por defecto de MySQL
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+        }
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
